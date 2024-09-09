@@ -45,6 +45,7 @@ export MYSQL_PASSWORD=db_password
 
 ```bash
 docker-compose up -d --build
+```
 
 #### 2. Check the containers:
 
@@ -54,9 +55,9 @@ docker-compose ps
 
 #### 3. Access the application:
 
-Open your browser and navigate to http://localhost:3000/.
-Access the Prometheus metrics at http://localhost:3000/metrics.
-Perform health checks at http://localhost:3000/health.
+- Open your browser and navigate to http://localhost:3000/.
+- Access the Prometheus metrics at http://localhost:3000/metrics.
+- Perform health checks at http://localhost:3000/health.
 
 ##### Stop and remove the containers:
 
