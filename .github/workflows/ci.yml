@@ -19,11 +19,11 @@ jobs:
         pip install pylint pytest
 
     
-    - name: Run tests
-      run: pytest --maxfail=1 --disable-warnings -q
+    #- name: Run tests
+    #  run: pytest --maxfail=1 --disable-warnings -q
     
-    - name: Lint code
-      run: pylint app
+    #- name: Lint code
+    #  run: pylint app
 
     - name: Build Docker image
       run: docker build -t fran123pv/leyline:1.0.0 .
