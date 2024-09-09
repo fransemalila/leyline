@@ -1,0 +1,12 @@
+replicaCount: 1
+
+image:
+  repository: your-dockerhub-repo/your-app
+  pullPolicy: Always
+  tag: "0.1.0"
+
+service:
+  type: ClusterIP
+  port: 3000
+
+resources: {}
