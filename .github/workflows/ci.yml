@@ -14,13 +14,13 @@ jobs:
         python-version: '3.11'
         
     - name: Install dependencies
-      run: pip install -r requirements.txt
+      run: |
+        pip install -r requirements.txt
+        pip install pylint pytest
 
-    - name: Install pytest
-      run: pip install pytest
     
-    #- name: Run tests
-    # run: pytest
+    - name: Run tests
+      run: pytest --maxfail=1 --disable-warnings -q
     
     - name: Lint code
       run: pylint app
