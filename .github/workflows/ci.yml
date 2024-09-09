@@ -23,13 +23,16 @@ jobs:
       run: pylint app
 
     - name: Build Docker image
-      run: docker build -t your-dockerhub-repo/your-app:0.1.0 .
+      run: docker build -t fran123pv/leyline:1.0.0 .
 
-    - name: Push Docker image
-      run: docker push your-dockerhub-repo/your-app:0.1.0
+    - name: Login to Docker Hub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ env.DOCKER_USERNAME }}" --password-stdin
       env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_USERNAME: ${{ env.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Push Docker image to Docker Hub
+      run: docker push fran123pv/leyline:1.0.0
         
     - name: Package Helm chart
       run: helm package helm-chart/
