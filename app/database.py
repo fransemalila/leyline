@@ -6,6 +6,5 @@ def init_db(app):
     app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://user:password@db/query_logs'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
-
     with app.app_context():
         db.create_all()

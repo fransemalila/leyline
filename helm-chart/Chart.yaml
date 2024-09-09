@@ -1,5 +1,5 @@
 apiVersion: v2
-name: your-app
-description: A Helm chart for your Flask app
+name: Leyline
+description: A Helm chart for Leyline Take home Assignment
 version: 1.0.0
 appVersion: "1.0.0"

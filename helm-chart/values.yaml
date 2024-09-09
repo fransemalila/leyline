@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: fran123pv/leyline:1.0.0
+  repository: fran123pv/leyline
   pullPolicy: Always
   tag: "1.0.0"
 

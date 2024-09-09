@@ -3,7 +3,6 @@ from prometheus_flask_exporter import PrometheusMetrics
 from app.api import api_blueprint
 from app.metrics import metrics_blueprint
 from app.database import init_db
-from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config.from_object('config.Config')
@@ -28,10 +27,8 @@ def health():
 def root():
     import time
     import os
-    
     current_time = int(time.time())
     is_kubernetes = os.getenv('KUBERNETES_SERVICE_HOST') is not None
-    
     return {
         'version': '0.1.0',
         'date': current_time,

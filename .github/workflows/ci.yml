@@ -8,35 +8,30 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: '3.11'
-        
+
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
         pip install pylint pytest
-
-    
-    #- name: Run tests
-    #  run: pytest --maxfail=1 --disable-warnings -q
-    
-    #- name: Lint code
-    #  run: pylint app
 
     - name: Build Docker image
       run: docker build -f app/Dockerfile -t fran123pv/leyline:1.0.0 .
 
     - name: Login to Docker Hub
       run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      env:
-        DOCKER_USERNAME: ${{ env.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Push Docker image to Docker Hub
       run: docker push fran123pv/leyline:1.0.0
-        
-    
-    - name: Package Helm chart
-      run: helm package helm-chart/
+
+    - name: Set environment variables for MySQL
+      env:
+        MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+        MYSQL_DATABASE: ${{ secrets.MYSQL_DATABASE }}
+        MYSQL_USER: ${{ secrets.MYSQL_USER }}
+        MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+      run: echo "Environment variables for MySQL set."

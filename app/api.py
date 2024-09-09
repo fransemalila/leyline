@@ -11,14 +11,11 @@ api_blueprint = Blueprint('api', __name__, url_prefix='/v1/tools')
 def lookup():
     data = request.get_json()
     domain = data.get('domain')
-    
     try:
         ipv4 = socket.gethostbyname(domain)
-        # Log the successful query to the database
         log = QueryLog(domain=domain, ipv4=ipv4)
         db.session.add(log)
         db.session.commit()
-        
         return jsonify({'domain': domain, 'ipv4': ipv4}), 200
     except socket.gaierror:
         return jsonify({'error': 'Invalid domain name'}), 400
@@ -28,7 +25,6 @@ def lookup():
 def validate():
     data = request.get_json()
     ip = data.get('ip')
-    
     if validators.ipv4(ip):
         return jsonify({'valid': True}), 200
     else:
