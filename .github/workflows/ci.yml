@@ -16,6 +16,15 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
+    - name: Install pytest
+      run: pip install pytest
+    
+    - name: Run tests
+      run: pytest
+    
+    - name: Lint code
+      run: pylint app
+
     - name: Build Docker image
       run: docker build -t fran123pv/leyline:1.0.0 .
 
