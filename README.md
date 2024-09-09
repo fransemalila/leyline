@@ -21,16 +21,16 @@ To be installed on the system:
 
 ### 1. Clone the Repository
 
-First, clone the project repository from your version control system:
+First, clone the project repository:
 
 ```bash
-git clone https://github.com/your-repo/flask-rest-api-project.git
-cd flask-rest-api-project
+git clone https://github.com/fransemalila/leyline.git
+cd leyline
 ```
 
 ### 2. Set Up Environment Variables
 
-MySQL credentials should be stored in environment variables or secrets
+MySQL credentials should be stored in secrets:
 
 ```bash
 export MYSQL_ROOT_PASSWORD=root_password
@@ -55,9 +55,9 @@ docker-compose ps
 
 #### 3. Access the application:
 
-- Open your browser and navigate to http://localhost:3000/.
-- Access the Prometheus metrics at http://localhost:3000/metrics.
-- Perform health checks at http://localhost:3000/health.
+- Navigate to http://localhost:3000/.
+- Prometheus metrics at http://localhost:3000/metrics.
+- Health checks at http://localhost:3000/health.
 
 ##### Stop and remove the containers:
 
@@ -77,7 +77,7 @@ helm package helm-chart/
 #### 2. Install the Helm chart:
 
 ```bash
-helm install my-flask-app ./helm-chart
+helm install leyline ./helm-chart
 ```
 
 #### 3. Check the pods:
@@ -89,13 +89,13 @@ kubectl get pods
 #### 4. Upgrade the Helm chart:
 
 ```bash
-helm upgrade my-flask-app ./helm-chart
+helm upgrade leyline ./helm-chart
 ```
 
 #### 5. Rollback the Helm chart:
 
 ```bash
-helm rollback my-flask-app
+helm rollback leyline
 ```
 
 
@@ -130,5 +130,5 @@ docker-compose down --rmi all --volumes
 #### Helm: To clean up Helm resources, use:
 
 ```bash
-helm uninstall my-flask-app
+helm uninstall leyline
 ```
