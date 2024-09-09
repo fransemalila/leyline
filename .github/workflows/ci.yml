@@ -37,5 +37,6 @@ jobs:
     - name: Push Docker image to Docker Hub
       run: docker push fran123pv/leyline:1.0.0
         
+    
     - name: Package Helm chart
       run: helm package helm-chart/
